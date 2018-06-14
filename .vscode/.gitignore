@@ -1,4 +1,4 @@
-Bin
-.idea
-.mono
+Bin/*
+.idea/*
+.mono/*
 *.zip
