@@ -1,0 +1,8 @@
+[gd_resource type="StreamTexture" format=2]
+
+[resource]
+
+flags = 7
+load_path = "res://.import/background.png-c6e0edb6ae00a576ddf31b14f0c4bf17.stex"
+_sections_unfolded = [ "Resource" ]
+

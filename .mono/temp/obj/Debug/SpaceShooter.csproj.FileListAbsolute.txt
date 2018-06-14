@@ -1,0 +1,6 @@
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Debug\SpaceShooter.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Debug\SpaceShooter.pdb
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Debug\SpaceShooter.csprojResolveAssemblyReference.cache
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Debug\SpaceShooter.csproj.CoreCompileInputs.cache
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Debug\SpaceShooter.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Debug\SpaceShooter.pdb
