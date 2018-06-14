@@ -1,6 +1,0 @@
-Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Release\SpaceShooter.dll
-Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Release\SpaceShooter.pdb
-Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Release\SpaceShooter.csprojResolveAssemblyReference.cache
-Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Release\SpaceShooter.csproj.CoreCompileInputs.cache
-Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Release\SpaceShooter.dll
-Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Release\SpaceShooter.pdb
