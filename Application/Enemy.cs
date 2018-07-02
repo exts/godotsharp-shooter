@@ -77,7 +77,7 @@ namespace SpaceShooter.Application
             if(Health <= 0)
             {
                 QueueFree();
-                EmitSignal("Destroyed", Points);
+                EmitSignal("Destroyed", Points, Position);
                 return true;
             }
 

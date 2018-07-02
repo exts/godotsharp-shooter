@@ -25,21 +25,25 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Enemies" type="Node" parent="GameCanvas" index="2"]
 
-[node name="EnemySpawnTimer" type="Timer" parent="GameCanvas" index="3"]
+[node name="Explosions" type="Node" parent="GameCanvas" index="3"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemySpawnTimer" type="Timer" parent="GameCanvas" index="4"]
 
 process_mode = 1
 wait_time = 3.0
 one_shot = false
 autostart = true
 
-[node name="FormationTimer" type="Timer" parent="GameCanvas" index="4"]
+[node name="FormationTimer" type="Timer" parent="GameCanvas" index="5"]
 
 process_mode = 1
 wait_time = 2.53511
 one_shot = false
 autostart = false
 
-[node name="Healthbar" parent="GameCanvas" index="5" instance=ExtResource( 4 )]
+[node name="Healthbar" parent="GameCanvas" index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 34.0813, 40.6504 )
 

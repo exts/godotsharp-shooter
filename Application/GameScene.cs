@@ -13,13 +13,17 @@ namespace SpaceShooter.Application
 
         private Node _bullets;
         private Node _enemies;
+        private Node _explosions;
+
         private Ship _ship;
         private Timer _formationTimer;
         private Timer _enemySpawnTimer;
         private Vector2 _viewport;
         private Formations _formations = new Formations();
+
         private PackedScene _enemyObject;
         private PackedScene _bulletObject;
+        private PackedScene _explosionObject;
 
         private int _score = 0;
 
@@ -46,10 +50,12 @@ namespace SpaceShooter.Application
             // setup packed scenes used to spawn multiple objects from the same textures
             _enemyObject = (PackedScene) ResourceLoader.Load("res://Scenes/Objects/Enemy.tscn");
             _bulletObject = (PackedScene) ResourceLoader.Load("res://Scenes/Objects/Bullet.tscn");
+            _explosionObject = (PackedScene) ResourceLoader.Load("res://Scenes/Objects/Explosion.tscn");
 
             // get containers
             _bullets = GetNode("GameCanvas/Bullets");
             _enemies = GetNode("GameCanvas/Enemies");
+            _explosions = GetNode("GameCanvas/Explosions");
 
             // connect the ship signal to a method inside our game scene, this would allow us to spawn bullets
             // into the scene after we press spacebar. Allowing us to keep our code as separated as possible. Also
@@ -138,9 +144,14 @@ namespace SpaceShooter.Application
             }
         }
 
-        public void EnemyDestroyed(int points)
+        public void EnemyDestroyed(int points, Vector2 position)
         {
             _score += points;
+            
+            //spawn explosion
+            var explosion = (Explosion) _explosionObject.Instance();
+            explosion.Position = position;
+            _explosions.AddChild(explosion);
             
             Print(_score);
         }
