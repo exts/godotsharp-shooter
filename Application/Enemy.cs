@@ -13,6 +13,7 @@ namespace SpaceShooter.Application
         
         public int Speed = 250;
         public int Health = 40;
+        public int CrashDamage = 20;
         public readonly int Points = 10;
 
         private const string ShipType = "enemy";

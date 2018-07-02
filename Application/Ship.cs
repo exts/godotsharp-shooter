@@ -12,6 +12,7 @@ namespace SpaceShooter.Application
 
         public int Speed = 500;
         public int Health = 100;
+        public int CrashDamage = 20;
 
         private const string ShipType = "player";
         private Vector2 _windowSize;
@@ -66,8 +67,13 @@ namespace SpaceShooter.Application
             {
                 case Bullet bullet:
                     ShipBulletDamage(bullet);
-                break;
+                    break;
+                case Enemy enemy:
+                    ShipCrashDamage(enemy);
+                    break;
             }
+            
+            Print(Health);
         }
 
         public void ShipBulletDamage(Bullet bullet)
@@ -77,6 +83,12 @@ namespace SpaceShooter.Application
             Health -= bullet.Damage;
             
             bullet.QueueFree();
+        }
+
+        public void ShipCrashDamage(Enemy enemy)
+        {
+            Health -= enemy.CrashDamage;
+            enemy.Health -= CrashDamage;
         }
         
         /// <summary>
