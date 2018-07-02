@@ -67,4 +67,5 @@ debugger_agent/wait_timeout=10000
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
 environment/default_environment="res://default_env.tres"

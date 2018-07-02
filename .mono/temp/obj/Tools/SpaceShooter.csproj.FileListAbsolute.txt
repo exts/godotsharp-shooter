@@ -1,0 +1,16 @@
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\SpaceShooter.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\SpaceShooter.pdb
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Tools\SpaceShooter.csprojResolveAssemblyReference.cache
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Tools\SpaceShooter.csproj.CoreCompileInputs.cache
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Tools\SpaceShooter.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Tools\SpaceShooter.pdb
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\Newtonsoft.Json.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\Mono.Security.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\System.Configuration.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\Mono.Posix.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\System.ServiceModel.Internals.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\System.Transactions.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\System.EnterpriseServices.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\System.Security.dll
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\bin\Tools\Newtonsoft.Json.xml
+Z:\GameDev\Projects\Tutorials\SpaceShooter\.mono\temp\obj\Tools\SpaceShooter.csproj.CopyComplete

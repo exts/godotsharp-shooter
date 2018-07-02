@@ -142,7 +142,7 @@ namespace SpaceShooter.Application
         {
             _score += points;
             
-//            Print(_score);
+            Print(_score);
         }
     }
 }

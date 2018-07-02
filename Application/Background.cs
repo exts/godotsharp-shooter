@@ -17,7 +17,7 @@ namespace SpaceShooter.Application
         public override void _Process(float delta)
         {
             var speed = Speed * delta;
-            Camera.Position = new Vector2(Camera.Position.x + speed, Camera.Position.y);
+            Camera.Position = new Vector2(Camera.Position.x - speed, Camera.Position.y);
         }
     }
 }
