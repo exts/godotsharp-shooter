@@ -46,19 +46,24 @@
       <HintPath>$(ProjectDir)\.mono\assemblies\GodotSharpEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Background.cs" />
     <Compile Include="Application\Bullet.cs" />
-    <Compile Include="Application\Core\Formation.cs" />
     <Compile Include="Application\Core\Formations.cs" />
     <Compile Include="Application\Core\ShipInfo.cs" />
-    <Compile Include="Application\Core\Spawn.cs" />
     <Compile Include="Application\Enemy.cs" />
     <Compile Include="Application\GameScene.cs" />
     <Compile Include="Application\Ship.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
