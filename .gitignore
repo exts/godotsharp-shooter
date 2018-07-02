@@ -2,4 +2,5 @@ Bin/
 .idea/
 .mono/
 *.zip
-packages/
+!packages
+packages/*
