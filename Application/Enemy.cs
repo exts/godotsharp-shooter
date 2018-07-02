@@ -87,7 +87,7 @@ namespace SpaceShooter.Application
         {
             if(!(obj is Bullet bullet)) return;
             
-            // stop hidding yourself
+            // stop hitting yourself
             if(bullet.ShipType() == "enemy") return;
             
             // deal damage

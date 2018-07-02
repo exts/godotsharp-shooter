@@ -73,7 +73,7 @@ namespace SpaceShooter.Application
         {
             var bullet = (Bullet) _bulletObject.Instance();
             
-            bullet.Init(_ship.ShipInfo(), "right");
+            bullet.Init(_ship.ShipInfo());
             
             //keep a copy of the instance to make it easier to delete the bullet from memory
             GetNode("GameCanvas/Bullets").AddChild(bullet);

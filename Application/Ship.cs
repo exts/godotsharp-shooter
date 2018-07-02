@@ -9,8 +9,9 @@ namespace SpaceShooter.Application
     {
         [Signal]
         public delegate void WeaponDischarged();
-        
+
         public int Speed = 500;
+        public int Health = 100;
 
         private const string ShipType = "player";
         private Vector2 _windowSize;
@@ -25,6 +26,8 @@ namespace SpaceShooter.Application
             // since we rotated our sprite, we need to use the width instead of the height
             // when trying to center our sprite vertically
             Position = new Vector2(20, _windowSize.y / 2 - GetDimensions().x / 2);
+
+            Connect("area_entered", this, "ShipDamaged");
         }
 
         public override void _Process(float delta)
@@ -53,6 +56,29 @@ namespace SpaceShooter.Application
             return new Vector2();
         }
 
+        /// <summary>
+        /// Ship takes bullet damage, decrease the health
+        /// </summary>
+        /// <param name="obj"></param>
+        public void ShipDamaged(object obj)
+        {
+            switch(obj)
+            {
+                case Bullet bullet:
+                    ShipBulletDamage(bullet);
+                break;
+            }
+        }
+
+        public void ShipBulletDamage(Bullet bullet)
+        {
+            if(bullet.ShipType() == "player") return;
+
+            Health -= bullet.Damage;
+            
+            bullet.QueueFree();
+        }
+        
         /// <summary>
         /// Handle the input for moving our ship
         /// </summary>
