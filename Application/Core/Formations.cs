@@ -11,8 +11,7 @@ namespace SpaceShooter.Application.Core
     public class Formations
     {
         // formations are groups of spawn positions. Each spawn has a 1 or 0 where 1 means to spawn said enemy and 0
-        // is to ignore. Gives us the opportunity to make cool formations if we wanted to. We could've also done this
-        // using json.
+        // is to ignore. Gives us the opportunity to make cool formations if we wanted to.
         private List<List<List<int>>> _formationList = new List<List<List<int>>>();
 
         public int CurrentColumn = 0;
@@ -31,7 +30,7 @@ namespace SpaceShooter.Application.Core
         // todo: make a note talking about converting formation list into json data
         public Formations()
         {
-            loadJson();
+            LoadJson();
             SelectRandomFormation();
         }
 
@@ -48,7 +47,6 @@ namespace SpaceShooter.Application.Core
                 foreach(var spawn in formation)
                 {
                     spawns[spawnCount] = spawn[CurrentColumn];
-                    Print(spawns[spawnCount]);
                     ++spawnCount;
                 }
             }
@@ -78,13 +76,6 @@ namespace SpaceShooter.Application.Core
             }
         }
 
-        public bool IsEndOfColumn()
-        {
-            int nextColumn;
-
-            return IsEndOfColumn(out nextColumn);
-        }
-
         public bool IsEndOfColumn(out int outColumn)
         {
             outColumn = CurrentColumn + 1;
@@ -93,7 +84,7 @@ namespace SpaceShooter.Application.Core
             return outColumn == currentFormation.Count;
         }
 
-        private void loadJson()
+        private void LoadJson()
         {
             var file = new File();
             if(file.Open(_formationDataPath, (int) File.ModeFlags.Read) != Error.Ok)
