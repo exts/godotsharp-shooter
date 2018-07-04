@@ -10,6 +10,12 @@ namespace SpaceShooter.Application
         [Signal]
         public delegate void WeaponDischarged();
 
+        [Signal]
+        public delegate void Damaged(int health);
+
+        [Signal]
+        public delegate void Destroyed(Vector2 position);
+
         public int Speed = 500;
         public int Health = 100;
         public int CrashDamage = 20;
@@ -17,6 +23,10 @@ namespace SpaceShooter.Application
         private const string ShipType = "player";
         private Vector2 _windowSize;
         private AnimatedSprite _animatedSprite;
+
+        public Vector2 DefaultPosition;
+
+        public bool Dead = true;
         
         public override void _Ready()
         {
@@ -26,13 +36,15 @@ namespace SpaceShooter.Application
             // setup default position
             // since we rotated our sprite, we need to use the width instead of the height
             // when trying to center our sprite vertically
-            Position = new Vector2(20, _windowSize.y / 2 - GetDimensions().x / 2);
+            Position = DefaultPosition = new Vector2(20, _windowSize.y / 2 - GetDimensions().x / 2);
 
-            Connect("area_entered", this, "ShipDamaged");
+            Connect("area_entered", this, nameof(ShipDamaged));
         }
 
         public override void _Process(float delta)
         {
+            if(Dead) return;
+            
             HandleShipMovement(delta);
             HandleWeaponDischarge();
         }
@@ -72,8 +84,9 @@ namespace SpaceShooter.Application
                     ShipCrashDamage(enemy);
                     break;
             }
-            
-            Print(Health);
+
+            EmitSignal(nameof(Damaged), Health);
+            HandleShipDestroyed();
         }
 
         public void ShipBulletDamage(Bullet bullet)
@@ -89,6 +102,13 @@ namespace SpaceShooter.Application
         {
             Health -= enemy.CrashDamage;
             enemy.Health -= CrashDamage;
+        }
+
+        public void Reset()
+        {
+            Dead = false;
+            Health = 100;
+            Position = DefaultPosition;
         }
         
         /// <summary>
@@ -134,7 +154,16 @@ namespace SpaceShooter.Application
         {
             if(Input.IsActionJustPressed("ui_spacebar")) 
             {
-                EmitSignal("WeaponDischarged");
+                EmitSignal(nameof(WeaponDischarged));
+            }
+        }
+
+        private void HandleShipDestroyed()
+        {
+            if(Health <= 0)
+            {
+                Dead = true;
+                EmitSignal(nameof(Destroyed), Position);
             }
         }
 

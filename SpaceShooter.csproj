@@ -61,6 +61,7 @@
     <Compile Include="Application\Explosion.cs" />
     <Compile Include="Application\GameScene.cs" />
     <Compile Include="Application\Ship.cs" />
+    <Compile Include="Application\StatusPanel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

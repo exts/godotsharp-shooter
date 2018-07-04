@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Application/GameScene.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/Ship.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/Healthbar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/ScoreUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/UI/StatusPanel.tscn" type="PackedScene" id=6]
 
 [node name="GameScene" type="Node2D" index="0"]
 
@@ -21,6 +23,8 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Ship" parent="GameCanvas" index="0" instance=ExtResource( 3 )]
 
+visible = false
+
 [node name="Bullets" type="Node" parent="GameCanvas" index="1"]
 
 [node name="Enemies" type="Node" parent="GameCanvas" index="2"]
@@ -34,7 +38,7 @@ _sections_unfolded = [ "Transform" ]
 process_mode = 1
 wait_time = 3.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="FormationTimer" type="Timer" parent="GameCanvas" index="5"]
 
@@ -46,5 +50,13 @@ autostart = false
 [node name="Healthbar" parent="GameCanvas" index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 34.0813, 40.6504 )
+
+[node name="ScoreUI" parent="GameCanvas" index="7" instance=ExtResource( 5 )]
+
+position = Vector2( 534.841, 22.2176 )
+
+[node name="StatusPanel" parent="GameCanvas" index="8" instance=ExtResource( 6 )]
+
+visible = false
 
 

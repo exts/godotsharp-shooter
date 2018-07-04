@@ -40,7 +40,7 @@ namespace SpaceShooter.Application
             
             _bulletObject = (PackedScene) ResourceLoader.Load("res://Scenes/Objects/Bullet.tscn");
 
-            Connect("area_entered", this, "EnemyDamaged");
+            Connect("area_entered", this, nameof(EnemyDamaged));
         }
 
         public override void _Process(float delta)
@@ -77,7 +77,7 @@ namespace SpaceShooter.Application
             if(Health <= 0)
             {
                 QueueFree();
-                EmitSignal("Destroyed", Points, Position);
+                EmitSignal(nameof(Destroyed), Points, Position);
                 return true;
             }
 

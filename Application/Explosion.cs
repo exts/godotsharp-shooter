@@ -4,16 +4,19 @@ namespace SpaceShooter.Application
 {
     public class Explosion : Node2D
     {
+        [Signal]
+        public delegate void Destroyed();
+        
         public override void _Ready()
         {
             var animatedSprite = (AnimatedSprite) GetNode("AnimatedSprite");
             animatedSprite.Play();
-            animatedSprite.Connect("animation_finished", this, "DestroyItself");
+            animatedSprite.Connect("animation_finished", this, nameof(DestroyItself));
         }
 
         public void DestroyItself()
         {
-            GD.Print("Deleted itself");
+            EmitSignal("Destroyed");
             QueueFree();
         }
     }
