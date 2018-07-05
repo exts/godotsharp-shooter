@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Music-Power Bots Loop-dlsounds.com.wav-2e27ac0858bc1ffbb49aaa209c7fb40a.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/Music-Power Bots Loop-dlsounds.com.wav"
+dest_files=[ "res://.import/Music-Power Bots Loop-dlsounds.com.wav-2e27ac0858bc1ffbb49aaa209c7fb40a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

@@ -18,7 +18,6 @@ namespace SpaceShooter.Application
             _panelButton.Connect("pressed", this, nameof(Restart));
         }
         
-        
         public void ShowStartGamePanel()
         {
             _panelLabel.Text = "New Game";

@@ -11,7 +11,7 @@ namespace SpaceShooter.Application
         public delegate void WeaponDischarged();
 
         [Signal]
-        public delegate void Damaged(int health);
+        public delegate void Damaged(int health, string type);
 
         [Signal]
         public delegate void Destroyed(Vector2 position);
@@ -75,17 +75,21 @@ namespace SpaceShooter.Application
         /// <param name="obj"></param>
         public void ShipDamaged(object obj)
         {
+            var type = string.Empty;
+            
             switch(obj)
             {
                 case Bullet bullet:
+                    type = "bullet";
                     ShipBulletDamage(bullet);
                     break;
                 case Enemy enemy:
+                    type = "crash";
                     ShipCrashDamage(enemy);
                     break;
             }
 
-            EmitSignal(nameof(Damaged), Health);
+            EmitSignal(nameof(Damaged), Health, type);
             HandleShipDestroyed();
         }
 

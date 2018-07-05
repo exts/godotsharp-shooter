@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Application/GameScene.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Objects/Ship.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/UI/Healthbar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/UI/ScoreUI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/UI/StatusPanel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/sounds/hit.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/sounds/crash.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/sounds/laser.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/sounds/explosion.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/sounds/Music-Power Bots Loop-dlsounds.com.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Objects/Ship.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/UI/Healthbar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/UI/ScoreUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/UI/StatusPanel.tscn" type="PackedScene" id=11]
 
 [node name="GameScene" type="Node2D" index="0"]
 
@@ -13,7 +18,54 @@ script = ExtResource( 1 )
 
 [node name="BackgroundScene" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="GameCanvas" type="CanvasLayer" parent="." index="1"]
+[node name="Audio" type="Node2D" parent="." index="1"]
+
+[node name="Hit" type="AudioStreamPlayer" parent="Audio" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Crash" type="AudioStreamPlayer" parent="Audio" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Laser" type="AudioStreamPlayer" parent="Audio" index="2"]
+
+stream = ExtResource( 5 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Audio" index="3"]
+
+stream = ExtResource( 6 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio" index="4"]
+
+stream = ExtResource( 7 )
+volume_db = -18.1
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="GameCanvas" type="CanvasLayer" parent="." index="2"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -21,7 +73,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Ship" parent="GameCanvas" index="0" instance=ExtResource( 3 )]
+[node name="Ship" parent="GameCanvas" index="0" instance=ExtResource( 8 )]
 
 visible = false
 
@@ -47,15 +99,15 @@ wait_time = 2.53511
 one_shot = false
 autostart = false
 
-[node name="Healthbar" parent="GameCanvas" index="6" instance=ExtResource( 4 )]
+[node name="Healthbar" parent="GameCanvas" index="6" instance=ExtResource( 9 )]
 
 position = Vector2( 34.0813, 40.6504 )
 
-[node name="ScoreUI" parent="GameCanvas" index="7" instance=ExtResource( 5 )]
+[node name="ScoreUI" parent="GameCanvas" index="7" instance=ExtResource( 10 )]
 
 position = Vector2( 534.841, 22.2176 )
 
-[node name="StatusPanel" parent="GameCanvas" index="8" instance=ExtResource( 6 )]
+[node name="StatusPanel" parent="GameCanvas" index="8" instance=ExtResource( 11 )]
 
 visible = false
 

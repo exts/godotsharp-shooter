@@ -10,6 +10,9 @@ namespace SpaceShooter.Application
     {
         [Signal]
         public delegate void Destroyed(int points);
+
+        [Signal]
+        public delegate void EnemyHit();
         
         public int Speed = 250;
         public int Health = 40;
@@ -96,6 +99,9 @@ namespace SpaceShooter.Application
                 
             // destroy bullet
             bullet.QueueFree();
+            
+            // tell the game to play a hit sound
+            EmitSignal(nameof(EnemyHit));
         }
 
         private void BulletSpawner(float delta)

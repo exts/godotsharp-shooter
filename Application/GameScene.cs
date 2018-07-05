@@ -25,6 +25,11 @@ namespace SpaceShooter.Application
         private StatusPanel _statusPanel;
         private Formations _formations = new Formations();
 
+        private AudioStreamPlayer _hitSound;
+        private AudioStreamPlayer _crashSound;
+        private AudioStreamPlayer _laserSound;
+        private AudioStreamPlayer _explosionSound;
+
         private PackedScene _enemyObject;
         private PackedScene _bulletObject;
         private PackedScene _explosionObject;
@@ -69,12 +74,18 @@ namespace SpaceShooter.Application
             
             _statusPanel = (StatusPanel) GetNode("GameCanvas/StatusPanel");
             _statusPanel.Connect("ResetGame", this, nameof(StartGame));
+            
+            // sounds
+            _hitSound = (AudioStreamPlayer) GetNode("Audio/Hit");
+            _crashSound = (AudioStreamPlayer) GetNode("Audio/Crash");
+            _laserSound = (AudioStreamPlayer) GetNode("Audio/Laser");
+            _explosionSound = (AudioStreamPlayer) GetNode("Audio/Explosion");
 
             // connect the ship signal to a method inside our game scene, this would allow us to spawn bullets
             // into the scene after we press spacebar. Allowing us to keep our code as separated as possible. Also
             // allowing us to have bullets interact with other things like enemies in our case.
             _ship = (Ship) GetNode("GameCanvas/Ship");
-            _ship.Connect("Damaged", this, nameof(UpdateHealthBar));
+            _ship.Connect("Damaged", this, nameof(ShipHit));
             _ship.Connect("Destroyed", this, nameof(ShipDestroyed));
             _ship.Connect("WeaponDischarged", this, nameof(SpawnBullet));
 
@@ -100,6 +111,8 @@ namespace SpaceShooter.Application
             
             //keep a copy of the instance to make it easier to delete the bullet from memory
             GetNode("GameCanvas/Bullets").AddChild(bullet);
+            
+            _laserSound.Play();
         }
 
         private void DespawnBullets()
@@ -157,8 +170,9 @@ namespace SpaceShooter.Application
                 
                 var enemy = (Enemy) _enemyObject.Instance();
                 enemy.Position = new Vector2(_formations.XPosition, _formations.Positions[spawn]);
+                enemy.Connect("EnemyHit", this, nameof(EnemyHit));
                 enemy.Connect("Destroyed", this, nameof(EnemyDestroyed));
-                
+
                 GetNode("GameCanvas/Enemies").AddChild(enemy);
             }
 
@@ -179,12 +193,27 @@ namespace SpaceShooter.Application
             progressBar.Value = health;
         }
 
+        public void EnemyHit()
+        {
+            _hitSound.Play();    
+        }
+        
         public void EnemyDestroyed(int points, Vector2 position)
         {
             _score += points;
             
             UpdateScore(_score);
             SpawnExplosion(position);
+        }
+
+        public void ShipHit(int health, string type)
+        {
+            UpdateHealthBar(health);
+
+            if(type == "crash")
+            {
+                _crashSound.Play();
+            }
         }
 
         public void ShipDestroyed(Vector2 position)
@@ -216,6 +245,8 @@ namespace SpaceShooter.Application
             explosion.Connect("Destroyed", this, nameof(ExplosionAnimationFinished));
             explosion.Position = position;
             _explosions.AddChild(explosion);
+            
+            _explosionSound.Play();
         }
 
         private void StartGame()
