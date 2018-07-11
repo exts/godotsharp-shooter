@@ -1,6 +1,7 @@
 Bin/
 .idea/
 .mono/
+Articles/
 *.zip
 !packages
 packages/*
