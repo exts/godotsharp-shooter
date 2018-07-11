@@ -210,9 +210,13 @@ namespace SpaceShooter.Application
         {
             UpdateHealthBar(health);
 
-            if(type == "crash")
-            {
-                _crashSound.Play();
+            switch(type) {
+                case "crash":
+                    _crashSound.Play();
+                    break;
+                case "bullet":
+                    _hitSound.Play();
+                    break;
             }
         }
 
