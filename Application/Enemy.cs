@@ -31,6 +31,8 @@ namespace SpaceShooter.Application
         private bool _bulletSpawnerPaused = false;
         private float _bulletSpawnerWaitTime = 2f;
         private float _bulletSpawnerTimePassed = 0f;
+        private float ticks = 0;
+        private bool startDirectionUp = false;
 
         private PackedScene _bulletObject = new PackedScene();
         
@@ -44,6 +46,9 @@ namespace SpaceShooter.Application
             _bulletObject = (PackedScene) ResourceLoader.Load("res://Scenes/Objects/Bullet.tscn");
 
             Connect("area_entered", this, nameof(EnemyDamaged));
+            
+            // start direction
+            startDirectionUp = GameScene.Rand.Next(0, 2) == 0;
         }
 
         public override void _Process(float delta)
@@ -55,9 +60,14 @@ namespace SpaceShooter.Application
             }
 
             BulletSpawner(delta);
+
+            ticks += delta;
+            
+            var y = Mathf.Sin((float) (ticks * .8 * Mathf.Pi));
+            y = startDirectionUp ? -y : y;
             
             // we use negative so the ship goes left instead of right
-            var direction = new Vector2(-Speed * delta, 0);
+            var direction = new Vector2(-Speed * delta, y);
             Position += direction;
         }
 
