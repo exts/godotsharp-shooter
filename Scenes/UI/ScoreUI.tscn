@@ -10,7 +10,7 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="ScoreUI" type="Node2D" index="0"]
+[node name="ScoreUI" type="Node2D"]
 
 [node name="Score" type="Label" parent="." index="0"]
 

@@ -36,7 +36,7 @@ namespace SpaceShooter.Application
 
         private int _score = 0;
 
-        private bool _running = true;
+        private bool _running = false;
 
         public override void _Ready()
         {
